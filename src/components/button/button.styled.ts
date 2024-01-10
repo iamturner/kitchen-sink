@@ -1,11 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-
-type StyledButtonTypes = {
-  children?: React.ReactNode;
-  variant?: "primary" | "secondary";
-};
+import ButtonProps from "./Button.types";
 
 const variantColors = {
   primary: {
@@ -20,8 +15,8 @@ const variantColors = {
   },
 };
 
-const StyledButton = styled("button")(
-  ({ variant = "primary" }: StyledButtonTypes) =>
+const StyledButton = styled.button<ButtonProps>(
+  ({ variant = "primary" }) =>
     css`
       appearance: none;
       background: ${variantColors[variant].base};

@@ -16,9 +16,7 @@ const App = () => {
         <li>React Testing Library</li>
         <li>Playwright (visual testing)</li>
       </ul>
-      <Button type="button" variant="primary">
-        This button does nothing
-      </Button>
+      <Button type="button">This button does nothing</Button>
     </div>
   );
 };

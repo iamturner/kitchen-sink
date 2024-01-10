@@ -1,4 +1,3 @@
-// import type { PlaywrightTestConfig } from "@playwright/test";
 import { devices } from "@playwright/experimental-ct-react";
 import react from "@vitejs/plugin-react";
 
