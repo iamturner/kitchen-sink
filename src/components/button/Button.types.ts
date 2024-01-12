@@ -6,5 +6,5 @@ export default interface ButtonProps
   /** Content of the Button */
   children?: React.ReactNode;
   /** Color variant of the Button */
-  variant: "primary" | "secondary";
+  variant?: "primary" | "secondary";
 }

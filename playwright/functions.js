@@ -1,4 +1,4 @@
-/* function for forcing psuedo states on to elements for visual tests */
+// function for forcing psuedo states on to elements for visual tests
 export const forceState = async (tree, selector, state = "") => {
   // create a Chrome Devtools session
   const cdp = await tree.page().context().newCDPSession(tree.page());

@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "declaration": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
-    "module": "commonjs",
     "outDir": "dist",
-    "skipLibCheck": true,
-    "target": "es2016"
+    "skipLibCheck": true
   },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "src/**/*.test.tsx" // ignore test files
+  ],
   "include": ["./src/**/*"]
 }

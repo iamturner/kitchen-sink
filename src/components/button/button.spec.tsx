@@ -1,7 +1,7 @@
 import React from "react";
 import { test, expect } from "@playwright/experimental-ct-react";
-import Button from "./Button";
 import { forceState } from "../../../playwright/functions";
+import Button from "./Button";
 
 test("Button - variant", async ({ mount }) => {
   const tree = await mount(
@@ -22,7 +22,7 @@ test("Button - variant", async ({ mount }) => {
       <Button variant="secondary">My Button</Button>
       <Button variant="secondary">My Button</Button>
       <Button variant="secondary">My Button</Button>
-    </div>
+    </div>,
   );
 
   await forceState(tree, "button:nth-child(4n + 2)", "hover");

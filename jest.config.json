@@ -1,7 +1,0 @@
-{
-  "snapshotSerializers": [
-    "@emotion/jest/serializer"
-  ],
-  "testEnvironment": "jsdom",
-  "testRegex": "((\\.|/*.)(test))\\.js?$"
-}

@@ -1,18 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ButtonProps from "./Button.types";
+import ButtonProps from "./button.types";
 import StyledButton from "./button.styled";
 
-type ForwardedRef = HTMLButtonElement;
-
-const Button = React.forwardRef<ForwardedRef, ButtonProps>(
-  ({ children, variant, ...rest }, forwardedRef) => {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, ...rest }, forwardedRef) => {
     return (
-      <StyledButton {...rest} ref={forwardedRef} variant={variant}>
+      <StyledButton {...rest} ref={forwardedRef}>
         {children}
       </StyledButton>
     );
-  }
+  },
 );
 
 Button.propTypes = {
