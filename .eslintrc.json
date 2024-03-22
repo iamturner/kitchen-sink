@@ -13,16 +13,23 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react", "prettier"],
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "prettier"],
   "rules": {
-    "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/no-var-requires": 0,
+    "prettier/prettier": "error"
   },
   "settings": {
     "import/resolver": {
       "typescript": {}
+    },
+    "react": {
+      "version": "detect"
     }
   }
 }
