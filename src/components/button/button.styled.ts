@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import ButtonProps from "./button.types";
 
-const variantColors = {
+const colorColors = {
   primary: {
     base: "mediumslateblue",
     hover: "slateblue",
@@ -16,12 +16,10 @@ const variantColors = {
 };
 
 const StyledButton = styled.button<ButtonProps>(
-  ({ variant = "primary" }) => css`
+  ({ color = "primary", variant = "solid" }) => css`
     appearance: none;
-    background: ${variantColors[variant].base};
     border: none;
     border-radius: 12px;
-    color: white;
     cursor: pointer;
     font-size: 15px;
     margin: 4px;
@@ -29,18 +27,49 @@ const StyledButton = styled.button<ButtonProps>(
     padding: 12px 24px 14px;
     transition: background-color 200ms;
 
-    &:active {
-      background: ${variantColors[variant].active};
+    svg {
+      display: block;
+      fill: currentColor;
     }
 
-    &:focus-visible {
-      outline: solid 2px ${variantColors[variant].base};
-      outline-offset: 2px;
-    }
+    ${variant === "solid" &&
+    css`
+      background: ${colorColors[color].base};
+      color: white;
 
-    &:hover {
-      background: ${variantColors[variant].hover};
-    }
+      &:focus-visible {
+        outline: solid 2px ${colorColors[color].base};
+        outline-offset: 2px;
+      }
+
+      &:hover {
+        background: ${colorColors[color].hover};
+      }
+
+      &:active {
+        background: ${colorColors[color].active};
+      }
+    `}
+
+    ${variant === "text" &&
+    css`
+      background: transparent;
+      color: ${colorColors[color].base};
+      padding: 8px;
+
+      &:focus-visible {
+        outline: solid 2px ${colorColors[color].base};
+        outline-offset: 2px;
+      }
+
+      &:hover {
+        color: ${colorColors[color].hover};
+      }
+
+      &:active {
+        color: ${colorColors[color].active};
+      }
+    `}
   `,
 );
 

@@ -6,11 +6,11 @@ import Button from "./Button";
 expect.extend(matchers);
 
 describe("Component: Button", () => {
-  test("It applies correct variant background", () => {
+  test("It applies correct color background", () => {
     render(
       <>
-        <Button data-testid="primary" variant="primary" />
-        <Button data-testid="secondary" variant="secondary" />
+        <Button data-testid="primary" color="primary" />
+        <Button data-testid="secondary" color="secondary" />
       </>,
     );
     expect(screen.getByTestId("primary")).toHaveStyleRule(

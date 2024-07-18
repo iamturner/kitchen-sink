@@ -5,6 +5,8 @@ export default interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Content of the Button */
   children?: React.ReactNode;
-  /** Color variant of the Button */
-  variant?: "primary" | "secondary";
+  /** Color of the Button */
+  color?: "primary" | "secondary";
+  /** Color of the Button */
+  variant?: "solid" | "text";
 }

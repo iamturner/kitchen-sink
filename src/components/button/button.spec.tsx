@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/experimental-ct-react";
 import { forceState } from "../../../playwright/functions";
 import Button from "./Button";
 
-test("Button - variant", async ({ mount }) => {
+test("Button - color", async ({ mount }) => {
   const tree = await mount(
     <div
       style={{
@@ -13,15 +13,15 @@ test("Button - variant", async ({ mount }) => {
         padding: 16,
       }}
     >
-      <Button variant="primary">My Button</Button>
-      <Button variant="primary">My Button</Button>
-      <Button variant="primary">My Button</Button>
-      <Button variant="primary">My Button</Button>
+      <Button color="primary">My Button</Button>
+      <Button color="primary">My Button</Button>
+      <Button color="primary">My Button</Button>
+      <Button color="primary">My Button</Button>
 
-      <Button variant="secondary">My Button</Button>
-      <Button variant="secondary">My Button</Button>
-      <Button variant="secondary">My Button</Button>
-      <Button variant="secondary">My Button</Button>
+      <Button color="secondary">My Button</Button>
+      <Button color="secondary">My Button</Button>
+      <Button color="secondary">My Button</Button>
+      <Button color="secondary">My Button</Button>
     </div>,
   );
 
