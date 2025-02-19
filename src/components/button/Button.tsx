@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonProps from "./button.types";
+import type ButtonProps from "./Button.types";
 import StyledButton from "./button.styled";
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import ButtonProps from "./button.types";
+import type ButtonProps from "./Button.types";
 
 const colorColors = {
   primary: {

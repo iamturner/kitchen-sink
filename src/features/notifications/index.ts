@@ -1,5 +1,5 @@
 import Notifications from "./Notifications";
-import notificationSlice from "./notification.slice";
+import notificationSlice from "./notifications.slice";
 
 const { actions: notificationActions, reducer: notificationReducer } =
   notificationSlice;

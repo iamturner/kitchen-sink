@@ -1,42 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Button } from "./components";
-import { Notifications, notificationActions } from "./features";
+import { Routes, Route } from "react-router";
+import { Notifications } from "./features";
+import HomePage from "./pages/Home";
+import ErrorPage from "./pages/Error";
 
 const App = () => {
-  const dispatch = useDispatch();
-
   return (
     <>
-      <div className="wrapper">
-        <h1>👨🏻‍💻 Kitchen Sink</h1>
-        <ul>
-          <li>React</li>
-          <li>Emotion</li>
-          <li>Typescript</li>
-          <br />
-          <li>Redux</li>
-          <br />
-          <li>Babel</li>
-          <li>Webpack</li>
-          <br />
-          <li>React Testing Library</li>
-          <li>Playwright (visual testing)</li>
-        </ul>
-        <Button
-          color="primary"
-          onClick={() =>
-            dispatch(
-              notificationActions.create(
-                `Redux Notification: ${Math.random().toString(36).slice(2)}`,
-              ),
-            )
-          }
-          type="button"
-        >
-          Click Here
-        </Button>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
       <Notifications />
     </>
   );
