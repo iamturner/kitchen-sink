@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import notificationSlice from "./notifications.slice";
+import { actions } from "./notifications.slice";
 import { type NotificationProps } from "./Notifications.types";
 import StyledNotifications from "./notifications.styled";
 import Notification from "./components/Notification";
@@ -26,7 +26,7 @@ const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
         // get JSON from response
         const json = await response.json();
         // dispatch notifications
-        dispatch(notificationSlice.actions.create(json.data));
+        dispatch(actions.create(json.data));
       } catch (error) {
         // error handling
       } finally {

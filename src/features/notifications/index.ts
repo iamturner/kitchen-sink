@@ -1,7 +1,6 @@
 import Notifications from "./Notifications";
-import notificationSlice from "./notifications.slice";
+import reducer, { actions } from "./notifications.slice";
 
-const { actions: notificationActions, reducer: notificationReducer } =
-  notificationSlice;
+export default Notifications;
 
-export { Notifications, notificationActions, notificationReducer };
+export { actions, reducer };

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "../components";
-import { notificationActions } from "../features";
+import { actions } from "../features/notifications";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const HomePage = () => {
       message: `Redux Notification: ${id}`,
     };
     // dispatch notification
-    dispatch(notificationActions.create(data));
+    dispatch(actions.create(data));
   };
 
   return (

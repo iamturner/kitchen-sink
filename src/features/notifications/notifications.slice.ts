@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { type NotificationProps } from "./Notifications.types";
 
 const notificationSlice = createSlice({
@@ -7,15 +7,23 @@ const notificationSlice = createSlice({
     value: [],
   },
   reducers: {
-    create: (state: { value: NotificationProps[] }, action) => {
+    create: (
+      state: { value: NotificationProps[] },
+      action: PayloadAction<NotificationProps>,
+    ) => {
       const array = [].concat(action.payload);
       state.value.unshift(...array);
     },
-    remove: (state: { value: NotificationProps[] }, action) => {
+    remove: (
+      state: { value: NotificationProps[] },
+      action: PayloadAction<number | string>,
+    ) => {
       const index = state.value.findIndex(({ id }) => id === action.payload);
       state.value.splice(index, 1);
     },
   },
 });
 
-export default notificationSlice;
+export const { actions } = notificationSlice;
+
+export default notificationSlice.reducer;

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Transition } from "react-transition-group";
 import moment from "moment";
 import { type NotificationProps } from "../Notifications.types";
-import notificationSlice from "../notifications.slice";
+import { actions } from "../notifications.slice";
 import { Button } from "../../../components";
 
 const Notification = ({ date, id, message }: NotificationProps) => {
@@ -20,7 +20,7 @@ const Notification = ({ date, id, message }: NotificationProps) => {
       in={isActive}
       key={id}
       nodeRef={nodeRef}
-      onExited={() => dispatch(notificationSlice.actions.remove(id))}
+      onExited={() => dispatch(actions.remove(id))}
       timeout={300}
     >
       {(state: string) => (

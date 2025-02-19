@@ -4,7 +4,7 @@ import { matchers } from "@emotion/jest";
 import { Provider } from "react-redux";
 import Notifications from "./Notifications";
 import store from "../../store";
-import { notificationActions } from "./";
+import { actions } from "./notifications.slice";
 
 expect.extend(matchers);
 
@@ -38,7 +38,7 @@ describe("Feature: Notifications", () => {
   });
 
   test("Calls create action on render with successful fetch and displays notification", async () => {
-    const createSpy = jest.spyOn(notificationActions, "create");
+    const createSpy = jest.spyOn(actions, "create");
 
     await act(async () => {
       render(
@@ -57,7 +57,7 @@ describe("Feature: Notifications", () => {
     // force failed response from mock fetch
     fetchResponseOk = false;
 
-    const createSpy = jest.spyOn(notificationActions, "create");
+    const createSpy = jest.spyOn(actions, "create");
 
     await act(async () => {
       render(
