@@ -4,9 +4,11 @@ import { actions } from "./notifications.slice";
 import { type NotificationProps } from "./Notifications.types";
 import StyledNotifications from "./notifications.styled";
 import Notification from "./components/Notification";
-import socket from "../../socket";
+import { useSocket } from "../../socket";
 
 const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
+  const { socket } = useSocket();
+
   const notifications = useSelector(
     (state: {
       notifications: {
@@ -39,15 +41,20 @@ const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
     };
     // call fetcher
     fetchData();
-    // listener for notify events from server
-    socket.on("notify", (data) => {
-      dispatch(actions.add(data));
-    });
-    // remove listener on unmount
-    return () => {
-      socket.off("notify");
-    };
   }, []);
+
+  useEffect(() => {
+    if (socket) {
+      // listener for notify events from server
+      socket.on("notify", (data) => {
+        dispatch(actions.add(data));
+      });
+      // remove listener on unmount
+      return () => {
+        socket.off("notify");
+      };
+    }
+  }, [socket.connected]);
 
   return (
     <StyledNotifications {...props}>

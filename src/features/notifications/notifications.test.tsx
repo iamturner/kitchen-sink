@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import Notifications from "./Notifications";
 import store from "../../store";
 import { actions } from "./notifications.slice";
+import { SocketProvider } from "../../socket";
 
 expect.extend(matchers);
 
@@ -43,7 +44,9 @@ describe("Feature: Notifications", () => {
     await act(async () => {
       render(
         <Provider store={store}>
-          <Notifications />
+          <SocketProvider>
+            <Notifications />
+          </SocketProvider>
         </Provider>,
       );
     });
@@ -62,7 +65,9 @@ describe("Feature: Notifications", () => {
     await act(async () => {
       render(
         <Provider store={store}>
-          <Notifications data-testid="notifications-list" />
+          <SocketProvider>
+            <Notifications data-testid="notifications-list" />
+          </SocketProvider>
         </Provider>,
       );
     });
