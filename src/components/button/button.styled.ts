@@ -42,11 +42,11 @@ const StyledButton = styled.button<ButtonProps>(
         outline-offset: 2px;
       }
 
-      &:hover {
+      &:hover:enabled {
         background: ${colorColors[color].hover};
       }
 
-      &:active {
+      &:active:enabled {
         background: ${colorColors[color].active};
       }
     `}
@@ -62,14 +62,19 @@ const StyledButton = styled.button<ButtonProps>(
         outline-offset: 2px;
       }
 
-      &:hover {
+      &:hover:enabled {
         color: ${colorColors[color].hover};
       }
 
-      &:active {
+      &:active:enabled {
         color: ${colorColors[color].active};
       }
     `}
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.6;
+    }
   `,
 );
 

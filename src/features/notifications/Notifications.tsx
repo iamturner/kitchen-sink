@@ -4,11 +4,15 @@ import { actions } from "./notifications.slice";
 import { type NotificationProps } from "./Notifications.types";
 import StyledNotifications from "./notifications.styled";
 import Notification from "./components/Notification";
+import socket from "../../socket";
 
 const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
   const notifications = useSelector(
-    (state: { notifications: { value: NotificationProps[] } }) =>
-      state.notifications.value,
+    (state: {
+      notifications: {
+        value: NotificationProps[];
+      };
+    }) => state.notifications.value,
   );
 
   const dispatch = useDispatch();
@@ -26,14 +30,23 @@ const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
         // get JSON from response
         const json = await response.json();
         // dispatch notifications
-        dispatch(actions.create(json.data));
+        dispatch(actions.add(json.data));
       } catch (error) {
         // error handling
       } finally {
         // done
       }
     };
+    // call fetcher
     fetchData();
+    // listener for notify events from server
+    socket.on("notify", (data) => {
+      dispatch(actions.add(data));
+    });
+    // remove listener on unmount
+    return () => {
+      socket.off("notify");
+    };
   }, []);
 
   return (

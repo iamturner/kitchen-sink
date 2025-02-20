@@ -38,7 +38,7 @@ describe("Feature: Notifications", () => {
   });
 
   test("Calls create action on render with successful fetch and displays notification", async () => {
-    const createSpy = jest.spyOn(actions, "create");
+    const createSpy = jest.spyOn(actions, "add");
 
     await act(async () => {
       render(
@@ -57,7 +57,7 @@ describe("Feature: Notifications", () => {
     // force failed response from mock fetch
     fetchResponseOk = false;
 
-    const createSpy = jest.spyOn(actions, "create");
+    const createSpy = jest.spyOn(actions, "add");
 
     await act(async () => {
       render(

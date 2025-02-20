@@ -7,7 +7,7 @@ const notificationSlice = createSlice({
     value: [],
   },
   reducers: {
-    create: (
+    add: (
       state: { value: NotificationProps[] },
       action: PayloadAction<NotificationProps>,
     ) => {
