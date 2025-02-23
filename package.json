@@ -9,7 +9,7 @@
     "lint": "esint \"**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "start": "webpack serve --mode development",
-    "start:server": "node server.js",
+    "start:server": "node --experimental-sqlite src/server",
     "storybook": "storybook dev -p 6006",
     "test": "jest --coverage",
     "test:visual": "playwright test -c playwright-ct.config.ts",
