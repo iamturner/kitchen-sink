@@ -1,10 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useQuery, gql } from "@apollo/client";
 import { actions } from "./notifications.slice";
 import { type NotificationProps } from "./Notifications.types";
 import StyledNotifications from "./notifications.styled";
 import Notification from "./components/Notification";
 import { useSocket } from "../../socket";
+
+const GET_NOTIFICATIONS = gql`
+  query GetNotifications {
+    notifications {
+      id
+      message
+    }
+  }
+`;
 
 const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
   const { socket } = useSocket();
@@ -19,29 +29,14 @@ const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
 
   const dispatch = useDispatch();
 
+  const { data } = useQuery(GET_NOTIFICATIONS);
+
   useEffect(() => {
-    // fetch notifications from server
-    const fetchData = async () => {
-      try {
-        // fetch from local Express server
-        const response = await fetch("/api/notifications");
-        // check for OK response
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-        // get JSON from response
-        const json = await response.json();
-        // dispatch notifications
-        dispatch(actions.add(json.data));
-      } catch (error) {
-        // error handling
-      } finally {
-        // done
-      }
-    };
-    // call fetcher
-    fetchData();
-  }, []);
+    if (data) {
+      // dispatch notifications
+      dispatch(actions.add(data.notifications));
+    }
+  }, [data, dispatch]);
 
   useEffect(() => {
     if (socket) {

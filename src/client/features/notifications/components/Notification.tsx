@@ -27,7 +27,7 @@ const Notification = ({ date, id, message }: NotificationProps) => {
         <li data-animation-state={state} data-test={5000} ref={nodeRef}>
           <div>
             <span>{message}</span>
-            <time dateTime={date.toString()}>{moment(date).fromNow()}</time>
+            <time>{moment(date).fromNow()}</time>
           </div>
           <Button onClick={() => setIsActive(false)} variant="text">
             <svg

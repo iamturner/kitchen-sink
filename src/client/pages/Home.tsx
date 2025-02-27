@@ -1,43 +1,46 @@
-import React, { useCallback } from "react";
+import React from "react";
+import { useMutation, gql } from "@apollo/client";
 import { Button } from "../components";
 import { useSocket } from "../socket";
 
 // random user ID
 const user = `user_${Math.random().toString(32).slice(2)}`;
 
+const CREATE_NOTIFICATION = gql`
+  mutation CreateNotification($id: String!, $message: String!) {
+    createNotification(id: $id, message: $message) {
+      id
+      message
+    }
+  }
+`;
+
 const HomePage = () => {
   const { isConnected, socket } = useSocket();
 
-  const sendNotification = useCallback(async () => {
-    // generate a random ID
+  // ...
+  const [createNotification] = useMutation(CREATE_NOTIFICATION, {
+    context: {
+      headers: {
+        "Content-Type": "application/json",
+        // include socket.io ID in headers
+        "X-Socket-ID": socket.id,
+      },
+    },
+  });
+
+  const sendNotification = async () => {
+    // generate a random notification ID
     const id = Math.random().toString(36).slice(2);
-    // create notification object
-    const data = {
-      date: new Date().toISOString(),
-      id,
-      message: `Message from ${user}`,
-    };
+    // post to local Apollo server
     try {
-      // post to local Express server
-      const response = await fetch("http://localhost:3000/api/notifications", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // include socket.io ID in headers
-          "X-Socket-ID": socket.id,
-        },
-        body: JSON.stringify(data),
+      await createNotification({
+        variables: { id, message: `Message from ${user}` },
       });
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-      // log JSON from response
-      console.log(await response.json());
     } catch (error) {
       // handle error
     }
-    // update function when socket connects
-  }, [socket.connected]);
+  };
 
   return (
     <>
@@ -56,6 +59,7 @@ const HomePage = () => {
           <li>Redux</li>
           <br />
           <li>Express</li>
+          <li>Apollo</li>
           <li>Socket.io</li>
           <br />
           <li>Babel</li>
