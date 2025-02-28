@@ -1,6 +1,6 @@
 import React from "react";
 import { test, expect } from "@playwright/experimental-ct-react";
-import { forceState } from "../../../playwright/functions";
+import { forceState } from "../../../../playwright/functions";
 import Button from "./Button";
 
 test("Button - color", async ({ mount }) => {

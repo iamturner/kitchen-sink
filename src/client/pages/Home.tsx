@@ -54,20 +54,20 @@ const HomePage = () => {
         <ul>
           <li>React</li>
           <li>Emotion</li>
-          <li>Typescript</li>
-          <br />
-          <li>Redux</li>
-          <br />
+          <li className="break">Typescript</li>
+
+          <li className="break">Redux</li>
+
           <li>Express</li>
           <li>Apollo</li>
-          <li>Socket.io</li>
-          <br />
+          <li className="break">Socket.io</li>
+
           <li>Babel</li>
-          <li>Webpack</li>
-          <br />
+          <li className="break">Webpack</li>
+
           <li>React Testing Library</li>
-          <li>Playwright (visual testing only)</li>
-          <br />
+          <li className="break">Playwright (visual testing only)</li>
+
           <li>Storybook</li>
         </ul>
         <Button

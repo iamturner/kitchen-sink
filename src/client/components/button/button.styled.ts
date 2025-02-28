@@ -24,7 +24,7 @@ const StyledButton = styled.button<ButtonProps>(
     font-size: 15px;
     margin: 4px;
     outline: none;
-    padding: 12px 24px 14px;
+    padding: 14px 24px;
     transition: background-color 200ms;
 
     svg {
