@@ -5,9 +5,11 @@ const parser = require("body-parser");
 const path = require("path");
 const socket = require("socket.io");
 
-const { ApolloServer, gql } = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-express");
 
 const clients = require("./clients");
+const resolvers = require("./resolvers");
+const typeDefs = require("./typedefs");
 
 // Express app
 const app = express();
@@ -21,39 +23,6 @@ const httpServer = http.createServer(app);
 
 // Apollo server
 const server = new ApolloServer({
-  typeDefs: gql`
-    type Notification {
-      id: String
-      message: String
-    }
-    type Query {
-      notifications: [Notification]
-    }
-    type Mutation {
-      createNotification(id: String!, message: String!): Notification
-    }
-  `,
-  resolvers: {
-    Query: {
-      notifications: () => [
-        {
-          id: "1",
-          message: "Notification from Apollo server",
-        },
-      ],
-    },
-    Mutation: {
-      createNotification: (parent, { id, message }, context) => {
-        // get client socket from map
-        const clientSocket = clients.get(context["x-socket-id"]);
-        // broadcast from client socket
-        if (clientSocket) {
-          clientSocket.broadcast.emit("notify", { id, message });
-        }
-        return { id, message };
-      },
-    },
-  },
   context: ({ req }) => {
     // return request headers
     return req.headers;
@@ -61,6 +30,8 @@ const server = new ApolloServer({
   cors: {
     origin: "*",
   },
+  resolvers,
+  typeDefs,
 });
 
 const io = socket(httpServer, { cors: { origin: "*" } });
