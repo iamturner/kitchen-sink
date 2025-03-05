@@ -1,5 +1,6 @@
 import React from "react";
 import { useMutation, gql } from "@apollo/client";
+import { Helmet } from "react-helmet";
 import { Button } from "../components";
 import { useSocket } from "../socket";
 
@@ -44,6 +45,9 @@ const HomePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Welcome | Home Page</title>
+      </Helmet>
       {isConnected && (
         <>
           <p className="logged-in-as">connected as: {user}</p>

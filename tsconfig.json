@@ -3,6 +3,7 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
+    "module": "CommonJS",
     "outDir": "dist",
     "skipLibCheck": true
   },

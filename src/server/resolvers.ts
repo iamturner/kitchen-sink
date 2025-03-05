@@ -1,4 +1,4 @@
-const clients = require("./clients");
+import clients from "./clients";
 
 const resolvers = {
   Query: {
