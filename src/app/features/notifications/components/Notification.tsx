@@ -29,7 +29,11 @@ const Notification = ({ date, id, message }: NotificationProps) => {
             <span>{message}</span>
             <time>{moment(date).fromNow()}</time>
           </div>
-          <Button onClick={() => setIsActive(false)} variant="text">
+          <Button
+            onClick={() => setIsActive(false)}
+            title="Remove Notification"
+            variant="text"
+          >
             <svg
               height="16px"
               width="16px"
