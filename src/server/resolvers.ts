@@ -10,9 +10,9 @@ const resolvers = {
     ],
   },
   Mutation: {
-    createNotification: (parent, { id, message }, context) => {
+    createNotification: (parent, { id, message }, { req }) => {
       // get client socket from map
-      const clientSocket = clients.get(context["x-socket-id"]);
+      const clientSocket = clients.get(req.headers["x-socket-id"]);
       // broadcast from client socket
       if (clientSocket) {
         clientSocket.broadcast.emit("notify", { id, message });

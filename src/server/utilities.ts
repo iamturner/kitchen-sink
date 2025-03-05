@@ -29,7 +29,7 @@ const prepare = async (path: string, req: Request) => {
     return data;
     // catch error from reading file
   } catch (error) {
-    return "ERROR";
+    return "Error";
   }
 };
 

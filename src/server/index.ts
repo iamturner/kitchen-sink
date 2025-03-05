@@ -3,9 +3,10 @@ import express from "express";
 import http from "http";
 import parser from "body-parser";
 import path from "path";
-import { Server as Socket } from "socket.io";
 
-const { ApolloServer } = require("apollo-server-express");
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
+import { Server as SocketServer } from "socket.io";
 
 import clients from "./clients";
 import resolvers from "./resolvers";
@@ -18,18 +19,18 @@ const app = express();
 app.use(cors());
 app.use(parser.json());
 
-app.get("*", async (req, res, next) => {
-  if (/(.ico|.js|.css|.jpg|.png|.map)$/i.test(req.path)) {
+app.use(async (req, res, next) => {
+  if (/(.ico|.js|.css|.jpg|.png|.map|\/graphql)$/i.test(req.path)) {
     next();
   } else {
-    // ...
     const filePath = path.resolve(__dirname, "../../dist", "index.html");
-
+    // prepare file for SEO / server rendering
     const data = await prepare(filePath, req);
 
     res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
     res.header("Expires", "-1");
     res.header("Pragma", "no-cache");
+
     res.send(data);
   }
 });
@@ -41,18 +42,12 @@ const httpServer = http.createServer(app);
 
 // Apollo server
 const server = new ApolloServer({
-  context: ({ req }) => {
-    // return request headers
-    return req.headers;
-  },
-  cors: {
-    origin: "*",
-  },
   resolvers,
   typeDefs,
 });
 
-const io = new Socket(httpServer, { cors: { origin: "*" } });
+// Socket.io server
+const io = new SocketServer(httpServer, { cors: { origin: "*" } });
 
 io.on("connection", (socket) => {
   // store socket connections
@@ -68,7 +63,14 @@ const launch = async () => {
   // start Apollo server
   await server.start();
 
-  server.applyMiddleware({ app, path: "/graphql" });
+  // use Express and allow access to headers in resolvers
+  app.use(
+    expressMiddleware(server, {
+      context: async ({ req, res }) => {
+        return { req, res };
+      },
+    }),
+  );
 
   const port = process.env.PORT || 3000;
 

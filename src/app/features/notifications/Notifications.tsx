@@ -7,7 +7,7 @@ import StyledNotifications from "./notifications.styled";
 import Notification from "./components/Notification";
 import { useSocket } from "../../socket";
 
-const GET_NOTIFICATIONS = gql`
+export const GET_NOTIFICATIONS = gql`
   query GetNotifications {
     notifications {
       id
