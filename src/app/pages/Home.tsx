@@ -19,7 +19,6 @@ const CREATE_NOTIFICATION = gql`
 const HomePage = () => {
   const { isConnected, socket } = useSocket();
 
-  // ...
   const [createNotification] = useMutation(CREATE_NOTIFICATION, {
     context: {
       headers: {

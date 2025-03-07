@@ -41,7 +41,7 @@ const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
   useEffect(() => {
     if (socket) {
       // listener for notify events from server
-      socket.on("notify", (data) => {
+      socket.on("notify", (data: NotificationProps | NotificationProps[]) => {
         dispatch(actions.add(data));
       });
       // remove listener on unmount

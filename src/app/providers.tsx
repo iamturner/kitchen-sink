@@ -1,21 +1,27 @@
 import React from "react";
 import { ApolloProvider } from "@apollo/client";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
-import { Provider } from "react-redux";
+import { Provider, ProviderProps } from "react-redux";
 import { SocketProvider } from "./socket";
 import client from "./apollo-client";
-import store from "./store";
+import defaultStore from "./store";
 
 interface ProvidersProps {
   children?: React.ReactNode;
   /** mocks for Apollo Server */
   mocks?: MockedResponse<object, object>[];
+  /** redux store */
+  store?: ProviderProps["store"];
 }
 
 const IS_TEST_ENV =
   typeof process !== "undefined" && process?.env?.NODE_ENV === "test";
 
-const Providers = ({ children, mocks }: ProvidersProps) => {
+const Providers = ({
+  children,
+  mocks,
+  store = defaultStore,
+}: ProvidersProps) => {
   return (
     <>
       <Provider store={store}>

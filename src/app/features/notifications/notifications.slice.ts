@@ -4,7 +4,7 @@ import { type NotificationProps } from "./Notifications.types";
 const notificationSlice = createSlice({
   name: "notifications",
   initialState: {
-    value: [],
+    value: [] as NotificationProps[],
   },
   reducers: {
     add: (
