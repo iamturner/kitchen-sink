@@ -1,9 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { matchers } from "@emotion/jest";
 import Button from "./Button";
-
-expect.extend(matchers);
 
 describe("Component: Button", () => {
   test("It applies correct color background", () => {

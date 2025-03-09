@@ -1,42 +1,22 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useQuery, gql } from "@apollo/client";
+import { useDispatch } from "react-redux";
 import { actions } from "./notifications.slice";
 import { type NotificationProps } from "./Notifications.types";
 import StyledNotifications from "./notifications.styled";
 import Notification from "./components/Notification";
 import { useSocket } from "../../socket";
-
-export const GET_NOTIFICATIONS = gql`
-  query GetNotifications {
-    notifications {
-      id
-      message
-    }
-  }
-`;
+import useNotifications from "./useNotifications";
 
 const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
   const { socket } = useSocket();
 
-  const notifications = useSelector(
-    (state: {
-      notifications: {
-        value: NotificationProps[];
-      };
-    }) => state.notifications.value,
-  );
-
   const dispatch = useDispatch();
 
-  const { data } = useQuery(GET_NOTIFICATIONS);
+  const { notifications, get } = useNotifications();
 
   useEffect(() => {
-    if (data) {
-      // dispatch notifications
-      dispatch(actions.add(data.notifications));
-    }
-  }, [data, dispatch]);
+    get();
+  }, []);
 
   useEffect(() => {
     if (socket) {

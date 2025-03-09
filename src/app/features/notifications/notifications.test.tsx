@@ -1,5 +1,4 @@
 import React from "react";
-import { matchers } from "@emotion/jest";
 import { configureStore } from "@reduxjs/toolkit";
 import {
   act,
@@ -9,29 +8,23 @@ import {
   waitFor,
 } from "@testing-library/react";
 import { ProviderProps } from "react-redux";
-import Notifications, { GET_NOTIFICATIONS } from "./Notifications";
-import reducer, { actions } from "./notifications.slice";
+import Notifications, { actions, reducer } from ".";
 import Notification from "./components/Notification";
 import Providers from "../../providers";
 import { useSocket } from "../../socket";
-
-expect.extend(matchers);
-
-jest.mock("../../socket", () => ({
-  ...jest.requireActual("../../socket"),
-  // mock useSocket hook
-  useSocket: jest.fn().mockReturnValue({
-    socket: {
-      on: jest.fn(),
-      off: jest.fn(),
-    },
-  }),
-}));
+import { gql } from "@apollo/client";
 
 const mocks = [
   {
     request: {
-      query: GET_NOTIFICATIONS,
+      query: gql`
+        query GetNotifications {
+          notifications {
+            id
+            message
+          }
+        }
+      `,
     },
     result: {
       data: {
@@ -88,24 +81,24 @@ describe("Feature: Notifications", () => {
     expect(state.value).toHaveLength(1);
   });
 
-  test("calls create action on render with successful fetch and displays notification", async () => {
+  test("calls add action on render with successful fetch and displays notification", async () => {
     // spy on "add" action in notifications slice
-    const createSpy = jest.spyOn(actions, "add");
+    const addSpy = jest.spyOn(actions, "add");
 
     render(
       <Providers mocks={mocks} store={store}>
         <Notifications />
       </Providers>,
     );
-    // create action should have been called
-    await waitFor(() => expect(createSpy).toHaveBeenCalled());
+    // add action should have been called
+    await waitFor(() => expect(addSpy).toHaveBeenCalled());
     // fetch message should be displayed
     expect(screen.getByText(mocks[0].result.data.notifications[0].message));
   });
 
-  test("calls create action on socket notify event", async () => {
+  test("calls add action on socket notify event", async () => {
     // spy on "add" action in notifications slice
-    const createSpy = jest.spyOn(actions, "add");
+    const addSpy = jest.spyOn(actions, "add");
 
     render(
       <Providers mocks={mocks} store={store}>
@@ -121,8 +114,13 @@ describe("Feature: Notifications", () => {
         message: "Notification 2",
       });
     });
-    // create action should have been called twice (initial render)
-    await waitFor(() => expect(createSpy).toHaveBeenCalledTimes(2));
+    // add action should have been called for received notification
+    await waitFor(() =>
+      expect(addSpy).toHaveBeenCalledWith({
+        id: "2",
+        message: "Notification 2",
+      }),
+    );
   });
 
   test("calls remove action on button click", async () => {
