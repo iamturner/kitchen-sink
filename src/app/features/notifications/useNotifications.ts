@@ -1,7 +1,8 @@
-import { useLazyQuery, useMutation, gql } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "./notifications.slice";
 import { type NotificationProps } from "./Notifications.types";
+import { CreateNotification, GetNotifications } from "./notifications.queries";
 import { useSocket } from "../../socket";
 
 const useNotifications = () => {
@@ -9,44 +10,24 @@ const useNotifications = () => {
 
   const dispatch = useDispatch();
 
-  const [create] = useMutation(
-    gql`
-      mutation CreateNotification($id: String!, $message: String!) {
-        createNotification(id: $id, message: $message) {
-          id
-          message
-        }
-      }
-    `,
-    {
-      context: {
-        headers: {
-          "Content-Type": "application/json",
-          // include socket.io ID in headers
-          "X-Socket-ID": socket.id,
-        },
+  const [create] = useMutation(CreateNotification, {
+    context: {
+      headers: {
+        "Content-Type": "application/json",
+        // include socket.io ID in headers
+        "X-Socket-ID": socket.id,
       },
     },
-  );
+  });
 
-  const [get] = useLazyQuery(
-    gql`
-      query GetNotifications {
-        notifications {
-          id
-          message
-        }
+  const [fetch] = useLazyQuery(GetNotifications, {
+    onCompleted: (data) => {
+      if (data) {
+        // dispatch notifications
+        dispatch(actions.add(data.notifications));
       }
-    `,
-    {
-      onCompleted: (data) => {
-        if (data) {
-          // dispatch notifications
-          dispatch(actions.add(data.notifications));
-        }
-      },
     },
-  );
+  });
 
   const notifications = useSelector(
     (state: {
@@ -69,7 +50,11 @@ const useNotifications = () => {
     }
   };
 
-  return { notifications, get, send };
+  const set = async (notification: NotificationProps | NotificationProps[]) => {
+    dispatch(actions.add(notification));
+  };
+
+  return { notifications, fetch, send, set };
 };
 
 export default useNotifications;

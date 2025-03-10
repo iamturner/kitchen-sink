@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { actions } from "./notifications.slice";
 import { type NotificationProps } from "./Notifications.types";
 import StyledNotifications from "./notifications.styled";
 import Notification from "./components/Notification";
@@ -10,19 +8,17 @@ import useNotifications from "./useNotifications";
 const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
   const { socket } = useSocket();
 
-  const dispatch = useDispatch();
-
-  const { notifications, get } = useNotifications();
+  const { notifications, fetch, set } = useNotifications();
 
   useEffect(() => {
-    get();
+    fetch();
   }, []);
 
   useEffect(() => {
     if (socket) {
       // listener for notify events from server
       socket.on("notify", (data: NotificationProps | NotificationProps[]) => {
-        dispatch(actions.add(data));
+        set(data);
       });
       // remove listener on unmount
       return () => {

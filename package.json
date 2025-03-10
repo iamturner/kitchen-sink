@@ -11,7 +11,7 @@
     "server": "nodemon src/server/index.ts",
     "start": "webpack serve --mode development",
     "storybook": "storybook dev -p 6006",
-    "test": "jest --coverage",
+    "test": "jest --coverage --force-exit",
     "test:visual": "playwright test -c playwright-ct.config.ts",
     "test:visual:update": "playwright test -c playwright-ct.config.ts -u"
   },

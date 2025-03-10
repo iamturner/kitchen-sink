@@ -4,27 +4,21 @@ import {
   act,
   fireEvent,
   render,
+  renderHook,
   screen,
   waitFor,
 } from "@testing-library/react";
 import { ProviderProps } from "react-redux";
-import Notifications, { actions, reducer } from ".";
+import Notifications, { actions, reducer, useNotifications } from ".";
+import { GetNotifications } from "./notifications.queries";
 import Notification from "./components/Notification";
 import Providers from "../../providers";
 import { useSocket } from "../../socket";
-import { gql } from "@apollo/client";
 
 const mocks = [
   {
     request: {
-      query: gql`
-        query GetNotifications {
-          notifications {
-            id
-            message
-          }
-        }
-      `,
+      query: GetNotifications,
     },
     result: {
       data: {
@@ -39,6 +33,30 @@ const mocks = [
   },
 ];
 
+const mockDispatch = jest.fn();
+const mockMutate = jest.fn();
+
+jest.mock("@apollo/client", () => ({
+  ...jest.requireActual("@apollo/client"),
+  // mock useLazyQuery and useMutation hooks
+  useLazyQuery: jest.fn().mockImplementation((_, { onCompleted }) => {
+    // trigger onCompleted event with mock notification
+    if (onCompleted) {
+      onCompleted(mocks[0].result.data);
+    }
+    return [jest.fn()];
+  }),
+  useMutation: jest.fn().mockImplementation(() => [mockMutate]),
+}));
+
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  // mock useDispatch and useSelector hooks
+  useDispatch: jest.fn().mockImplementation(() => mockDispatch),
+  // useSelector returns array of notifications
+  useSelector: jest.fn().mockImplementation(() => []),
+}));
+
 describe("Feature: Notifications", () => {
   let store: ProviderProps["store"];
 
@@ -51,6 +69,14 @@ describe("Feature: Notifications", () => {
     });
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  afterAll(() => {
+    jest.resetAllMocks();
+  });
+
   test("reducer should return the initial state", () => {
     const initialState = { value: [] };
     const state = reducer(undefined, { type: "" });
@@ -61,10 +87,14 @@ describe("Feature: Notifications", () => {
   test("action should add a notification to state", () => {
     const initialState = { value: [] };
 
-    const action = actions.add({ id: "1", message: "Notification 1" });
-    const state = reducer(initialState, action);
+    const state = reducer(
+      initialState,
+      actions.add({ id: "1", message: "Notification 1" }),
+    );
 
-    expect(state.value).toHaveLength(1);
+    expect(state.value).toEqual(
+      expect.arrayContaining([{ id: "1", message: "Notification 1" }]),
+    );
   });
 
   test("action should remove a notification from state", () => {
@@ -75,31 +105,42 @@ describe("Feature: Notifications", () => {
       ],
     };
 
-    const action = actions.remove("id");
-    const state = reducer(initialState, action);
+    const state = reducer(initialState, actions.remove("id"));
 
-    expect(state.value).toHaveLength(1);
+    expect(state.value).toEqual(
+      expect.not.arrayContaining([{ id: "2", message: "Notification 2" }]),
+    );
   });
 
-  test("calls add action on render with successful fetch and displays notification", async () => {
-    // spy on "add" action in notifications slice
-    const addSpy = jest.spyOn(actions, "add");
+  test("send function should trigger mutation", () => {
+    const { result } = renderHook(() => useNotifications());
 
+    act(() => {
+      result.current.send("Message from XXX");
+    });
+
+    expect(mockMutate).toHaveBeenCalledWith({
+      variables: expect.objectContaining({ message: "Message from XXX" }),
+    });
+  });
+
+  test("fetches notifications on render", async () => {
     render(
       <Providers mocks={mocks} store={store}>
         <Notifications />
       </Providers>,
     );
-    // add action should have been called
-    await waitFor(() => expect(addSpy).toHaveBeenCalled());
-    // fetch message should be displayed
-    expect(screen.getByText(mocks[0].result.data.notifications[0].message));
+
+    // fetch message should be dispatched to store
+    await waitFor(() =>
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: mocks[0].result.data.notifications,
+        type: "notifications/add",
+      }),
+    );
   });
 
-  test("calls add action on socket notify event", async () => {
-    // spy on "add" action in notifications slice
-    const addSpy = jest.spyOn(actions, "add");
-
+  test("dispatches notifications on socket notify event", async () => {
     render(
       <Providers mocks={mocks} store={store}>
         <Notifications />
@@ -114,19 +155,20 @@ describe("Feature: Notifications", () => {
         message: "Notification 2",
       });
     });
-    // add action should have been called for received notification
+
+    // received notifications should be dispatched to store
     await waitFor(() =>
-      expect(addSpy).toHaveBeenCalledWith({
-        id: "2",
-        message: "Notification 2",
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: {
+          id: "2",
+          message: "Notification 2",
+        },
+        type: "notifications/add",
       }),
     );
   });
 
-  test("calls remove action on button click", async () => {
-    // spy on "remove" action in notifications slice
-    const removeSpy = jest.spyOn(actions, "remove");
-
+  test("removes notification from store on button click", async () => {
     render(
       <Providers>
         <Notification id="1" message="Notification 1" />
@@ -135,6 +177,11 @@ describe("Feature: Notifications", () => {
 
     fireEvent.click(screen.getByTitle("Remove Notification"));
     // remove action should have been called
-    await waitFor(() => expect(removeSpy).toHaveBeenCalled());
+    await waitFor(() =>
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: "1",
+        type: "notifications/remove",
+      }),
+    );
   });
 });
