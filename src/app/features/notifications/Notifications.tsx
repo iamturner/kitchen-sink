@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { type NotificationProps } from "./Notifications.types";
 import StyledNotifications from "./notifications.styled";
-import Notification from "./components/Notification";
+import ListItem from "./components/ListItem";
 import { useSocket } from "../../socket";
 import useNotifications from "./useNotifications";
 
 const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
   const { socket } = useSocket();
 
-  const { notifications, fetch, set } = useNotifications();
+  const { fetch, notifications, received } = useNotifications();
 
   useEffect(() => {
     fetch();
@@ -17,8 +17,8 @@ const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
   useEffect(() => {
     if (socket) {
       // listener for notify events from server
-      socket.on("notify", (data: NotificationProps | NotificationProps[]) => {
-        set(data);
+      socket.on("notify", (data: NotificationProps) => {
+        received(data);
       });
       // remove listener on unmount
       return () => {
@@ -30,7 +30,7 @@ const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {
   return (
     <StyledNotifications {...props}>
       {notifications.map((notification) => (
-        <Notification key={notification.id} {...notification} />
+        <ListItem key={notification.id} {...notification} />
       ))}
     </StyledNotifications>
   );

@@ -22,9 +22,9 @@ const useNotifications = () => {
 
   const [fetch] = useLazyQuery(GetNotifications, {
     onCompleted: (data) => {
+      // dispatch notifications if received
       if (data) {
-        // dispatch notifications
-        dispatch(actions.add(data.notifications));
+        dispatch(actions.init(data.notifications));
       }
     },
   });
@@ -36,6 +36,11 @@ const useNotifications = () => {
       };
     }) => state.notifications.value,
   );
+
+  const received = (notification: NotificationProps) => {
+    // dispatch received notification
+    dispatch(actions.add(notification));
+  };
 
   const send = async (message: string) => {
     // generate a random notification ID
@@ -50,11 +55,7 @@ const useNotifications = () => {
     }
   };
 
-  const set = async (notification: NotificationProps | NotificationProps[]) => {
-    dispatch(actions.add(notification));
-  };
-
-  return { notifications, fetch, send, set };
+  return { fetch, notifications, received, send };
 };
 
 export default useNotifications;

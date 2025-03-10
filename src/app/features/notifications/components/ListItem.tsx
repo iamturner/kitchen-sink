@@ -6,7 +6,7 @@ import { type NotificationProps } from "../Notifications.types";
 import { actions } from "../notifications.slice";
 import { Button } from "../../../components";
 
-const Notification = ({ date, id, message }: NotificationProps) => {
+const ListItem = ({ date, id, message }: NotificationProps) => {
   const [isActive, setIsActive] = useState(false);
 
   const dispatch = useDispatch();
@@ -57,4 +57,4 @@ const Notification = ({ date, id, message }: NotificationProps) => {
   );
 };
 
-export default Notification;
+export default ListItem;

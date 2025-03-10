@@ -11,7 +11,7 @@ import {
 import { ProviderProps } from "react-redux";
 import Notifications, { actions, reducer, useNotifications } from ".";
 import { GetNotifications } from "./notifications.queries";
-import Notification from "./components/Notification";
+import Notification from "./components/ListItem";
 import Providers from "../../providers";
 import { useSocket } from "../../socket";
 
@@ -105,7 +105,7 @@ describe("Feature: Notifications", () => {
       ],
     };
 
-    const state = reducer(initialState, actions.remove("id"));
+    const state = reducer(initialState, actions.remove("2"));
 
     expect(state.value).toEqual(
       expect.not.arrayContaining([{ id: "2", message: "Notification 2" }]),
@@ -135,7 +135,7 @@ describe("Feature: Notifications", () => {
     await waitFor(() =>
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: mocks[0].result.data.notifications,
-        type: "notifications/add",
+        type: "notifications/init",
       }),
     );
   });
@@ -176,6 +176,7 @@ describe("Feature: Notifications", () => {
     );
 
     fireEvent.click(screen.getByTitle("Remove Notification"));
+
     // remove action should have been called
     await waitFor(() =>
       expect(mockDispatch).toHaveBeenCalledWith({

@@ -7,9 +7,15 @@ const notificationSlice = createSlice({
     value: [] as NotificationProps[],
   },
   reducers: {
+    init: (
+      state: { value: NotificationProps[] },
+      action: PayloadAction<NotificationProps | NotificationProps[]>,
+    ) => {
+      state.value = [].concat(action.payload);
+    },
     add: (
       state: { value: NotificationProps[] },
-      action: PayloadAction<NotificationProps>,
+      action: PayloadAction<NotificationProps | NotificationProps[]>,
     ) => {
       const array = [].concat(action.payload);
       state.value.unshift(...array);
@@ -19,7 +25,10 @@ const notificationSlice = createSlice({
       action: PayloadAction<number | string>,
     ) => {
       const index = state.value.findIndex(({ id }) => id === action.payload);
-      state.value.splice(index, 1);
+      // remove notification if found
+      if (index > -1) {
+        state.value.splice(index, 1);
+      }
     },
   },
 });

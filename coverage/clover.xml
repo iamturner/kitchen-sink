@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741638117293" clover="3.2.0">
-  <project timestamp="1741638117294" name="All files">
-    <metrics statements="132" coveredstatements="73" conditionals="31" coveredconditionals="16" methods="42" coveredmethods="24" elements="205" coveredelements="113" complexity="0" loc="132" ncloc="132" packages="8" files="27" classes="27"/>
+<coverage generated="1741645534454" clover="3.2.0">
+  <project timestamp="1741645534454" name="All files">
+    <metrics statements="134" coveredstatements="74" conditionals="33" coveredconditionals="17" methods="43" coveredmethods="24" elements="210" coveredelements="115" complexity="0" loc="134" ncloc="134" packages="8" files="27" classes="27"/>
     <package name="app">
       <metrics statements="24" coveredstatements="20" conditionals="11" coveredconditionals="8" methods="8" coveredmethods="4"/>
       <file name="App.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/App.tsx">
@@ -81,7 +81,7 @@
       </file>
     </package>
     <package name="app.features.notifications">
-      <metrics statements="40" coveredstatements="38" conditionals="4" coveredconditionals="2" methods="15" coveredmethods="13"/>
+      <metrics statements="42" coveredstatements="39" conditionals="6" coveredconditionals="3" methods="16" coveredmethods="13"/>
       <file name="Notifications.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/Notifications.tsx">
         <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="5"/>
         <line num="8" count="1" type="stmt"/>
@@ -110,13 +110,15 @@
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="notifications.slice.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/notifications.slice.ts">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="29" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
       </file>
       <file name="notifications.styled.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/notifications.styled.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -131,22 +133,22 @@
         <line num="11" count="3" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
         <line num="23" count="3" type="stmt"/>
-        <line num="25" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="27" count="3" type="stmt"/>
         <line num="32" count="3" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="40" count="3" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="53" count="3" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="57" count="3" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="58" count="3" type="stmt"/>
       </file>
     </package>
     <package name="app.features.notifications.components">
       <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-      <file name="Notification.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/components/Notification.tsx">
+      <file name="ListItem.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/components/ListItem.tsx">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="3" type="stmt"/>
