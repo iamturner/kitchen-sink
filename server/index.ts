@@ -23,7 +23,7 @@ app.use(async (req, res, next) => {
   if (/(.ico|.js|.css|.jpg|.png|.map|\/graphql)$/i.test(req.path)) {
     next();
   } else {
-    const filePath = path.resolve(__dirname, "../../dist", "index.html");
+    const filePath = path.resolve(__dirname, "../dist", "index.html");
     // prepare file for SEO / server rendering
     const data = await render(filePath, req);
 
@@ -35,7 +35,7 @@ app.use(async (req, res, next) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, "../../dist")));
+app.use(express.static(path.join(__dirname, "../dist")));
 
 // HTTP server
 const httpServer = http.createServer(app);

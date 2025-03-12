@@ -29,7 +29,8 @@ const render = async (path: string, req: Request) => {
     return data;
     // catch error from reading file
   } catch (error) {
-    return "Error";
+    // output error
+    return JSON.stringify(error);
   }
 };
 

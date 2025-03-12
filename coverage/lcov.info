@@ -1,5 +1,5 @@
 TN:
-SF:src/app/App.tsx
+SF:src/App.tsx
 FN:7,(anonymous_0)
 FNF:1
 FNH:0
@@ -12,7 +12,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/index.tsx
+SF:src/index.tsx
 FNF:0
 FNH:0
 DA:6,0
@@ -23,7 +23,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/providers.tsx
+SF:src/providers.tsx
 FN:20,(anonymous_0)
 FNF:1
 FNH:1
@@ -44,7 +44,7 @@ BRF:7
 BRH:6
 end_of_record
 TN:
-SF:src/app/store.ts
+SF:src/store.ts
 FNF:0
 FNH:0
 LF:0
@@ -53,7 +53,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/components/index.ts
+SF:src/components/index.ts
 FNF:0
 FNH:0
 LF:0
@@ -62,7 +62,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/components/button/Button.tsx
+SF:src/components/button/Button.tsx
 FN:6,(anonymous_0)
 FNF:1
 FNH:1
@@ -76,7 +76,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/components/button/Button.types.ts
+SF:src/components/button/Button.types.ts
 FNF:0
 FNH:0
 LF:0
@@ -85,7 +85,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/components/button/button.styled.ts
+SF:src/components/button/button.styled.ts
 FN:19,(anonymous_0)
 FNF:1
 FNH:1
@@ -105,7 +105,7 @@ BRF:6
 BRH:6
 end_of_record
 TN:
-SF:src/app/components/button/index.ts
+SF:src/components/button/index.ts
 FNF:0
 FNH:0
 LF:0
@@ -114,7 +114,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/features/index.ts
+SF:src/features/index.ts
 FNF:0
 FNH:0
 LF:0
@@ -123,7 +123,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/features/notifications/Notifications.tsx
+SF:src/features/notifications/Notifications.tsx
 FN:8,(anonymous_0)
 FN:13,(anonymous_1)
 FN:17,(anonymous_2)
@@ -159,7 +159,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:src/app/features/notifications/Notifications.types.ts
+SF:src/features/notifications/Notifications.types.ts
 FNF:0
 FNH:0
 LF:0
@@ -168,7 +168,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/features/notifications/index.ts
+SF:src/features/notifications/index.ts
 FNF:0
 FNH:0
 LF:0
@@ -177,7 +177,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/features/notifications/notifications.queries.ts
+SF:src/features/notifications/notifications.queries.ts
 FNF:0
 FNH:0
 DA:3,3
@@ -188,7 +188,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/features/notifications/notifications.slice.ts
+SF:src/features/notifications/notifications.slice.ts
 FN:10,(anonymous_0)
 FN:16,(anonymous_1)
 FN:23,(anonymous_2)
@@ -215,7 +215,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:src/app/features/notifications/notifications.styled.ts
+SF:src/features/notifications/notifications.styled.ts
 FN:14,(anonymous_0)
 FNF:1
 FNH:1
@@ -229,7 +229,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/features/notifications/useNotifications.ts
+SF:src/features/notifications/useNotifications.ts
 FN:8,(anonymous_0)
 FN:24,(anonymous_1)
 FN:33,(anonymous_2)
@@ -266,7 +266,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:src/app/features/notifications/components/ListItem.tsx
+SF:src/features/notifications/components/ListItem.tsx
 FN:9,(anonymous_0)
 FN:16,(anonymous_1)
 FN:23,(anonymous_2)
@@ -294,7 +294,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/lib/apollo-client.ts
+SF:src/lib/apollo-client.ts
 FNF:0
 FNH:0
 DA:5,3
@@ -307,7 +307,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:src/app/lib/socket.tsx
+SF:src/lib/socket.tsx
 FN:16,(anonymous_0)
 FN:23,(anonymous_1)
 FN:24,(anonymous_2)
@@ -345,7 +345,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:src/app/pages/index.ts
+SF:src/pages/index.ts
 FNF:0
 FNH:0
 LF:0
@@ -354,7 +354,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/pages/error/Error.tsx
+SF:src/pages/error/Error.tsx
 FN:5,(anonymous_0)
 FNF:1
 FNH:1
@@ -367,7 +367,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/pages/error/index.ts
+SF:src/pages/error/index.ts
 FNF:0
 FNH:0
 LF:0
@@ -376,7 +376,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/pages/home/Home.tsx
+SF:src/pages/home/Home.tsx
 FN:10,(anonymous_0)
 FN:49,(anonymous_1)
 FNF:2
@@ -397,7 +397,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:src/app/pages/home/index.ts
+SF:src/pages/home/index.ts
 FNF:0
 FNH:0
 LF:0
@@ -406,7 +406,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/app/utils/test.utils.tsx
+SF:src/utils/test.utils.tsx
 FN:6,(anonymous_0)
 FNF:1
 FNH:1

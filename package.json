@@ -8,7 +8,7 @@
     "build-storybook": "storybook build",
     "lint": "esint \"**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "server": "nodemon src/server/index.ts",
+    "server": "nodemon server/index.ts",
     "start": "webpack serve --mode development",
     "storybook": "storybook dev -p 6006",
     "test": "jest --coverage --force-exit",

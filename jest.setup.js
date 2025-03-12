@@ -7,8 +7,8 @@ global.TextDecoder = TextDecoder;
 
 expect.extend(matchers);
 
-jest.mock("./src/app/lib/socket", () => ({
-  ...jest.requireActual("./src/app/lib/socket"),
+jest.mock("./src/lib/socket", () => ({
+  ...jest.requireActual("./src/lib/socket"),
   // mock useSocket hook
   useSocket: jest.fn().mockReturnValue({
     socket: {
