@@ -2,15 +2,15 @@ import React from "react";
 import { ApolloProvider } from "@apollo/client";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { Provider, ProviderProps } from "react-redux";
-import { SocketProvider } from "./socket";
-import client from "./apollo-client";
+import { SocketProvider } from "./lib/socket";
+import client from "./lib/apollo-client";
 import defaultStore from "./store";
 
 interface ProvidersProps {
   children?: React.ReactNode;
-  /** mocks for Apollo Server */
+  /** @internal mocks for Apollo Server */
   mocks?: MockedResponse<object, object>[];
-  /** redux store */
+  /** @internal redux store */
   store?: ProviderProps["store"];
 }
 

@@ -28,7 +28,7 @@ const StyledNotifications = styled.ul(
       border-radius: 8px;
       box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
       display: flex;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       gap: 1rem;
       justify-content: space-between;
       margin: 12px;
@@ -46,7 +46,7 @@ const StyledNotifications = styled.ul(
 
       time {
         display: block;
-        font-size: 75%;
+        font-size: 0.8125rem;
         margin: 0.375rem 0 0 0;
         opacity: 0.6;
       }

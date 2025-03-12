@@ -1,8 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Button } from "../components";
-import { useSocket } from "../socket";
-import { useNotifications } from "../features/notifications";
+import { Button } from "../../components";
+import { useSocket } from "../../lib/socket";
+import { useNotifications } from "../../features/notifications";
 
 // random user ID
 const user = `user_${Math.random().toString(32).slice(2)}`;

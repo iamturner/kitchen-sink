@@ -12,7 +12,7 @@ const SEOMetadata = {
   },
 };
 
-const prepare = async (path: string, req: Request) => {
+const render = async (path: string, req: Request) => {
   try {
     // read file data
     let data = await fs.readFile(path, "utf8");
@@ -33,4 +33,4 @@ const prepare = async (path: string, req: Request) => {
   }
 };
 
-export { prepare };
+export { render };

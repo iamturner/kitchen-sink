@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { type NotificationProps } from "./Notifications.types";
 import StyledNotifications from "./notifications.styled";
 import ListItem from "./components/ListItem";
-import { useSocket } from "../../socket";
+import { useSocket } from "../../lib/socket";
 import useNotifications from "./useNotifications";
 
 const Notifications = (props: React.HTMLAttributes<HTMLUListElement>) => {

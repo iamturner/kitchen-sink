@@ -9,9 +9,9 @@ import { expressMiddleware } from "@apollo/server/express4";
 import { Server as SocketServer } from "socket.io";
 
 import clients from "./clients";
+import { render } from "./functions";
 import resolvers from "./resolvers";
 import typeDefs from "./typedefs";
-import { prepare } from "./utilities";
 
 // Express app
 const app = express();
@@ -25,7 +25,7 @@ app.use(async (req, res, next) => {
   } else {
     const filePath = path.resolve(__dirname, "../../dist", "index.html");
     // prepare file for SEO / server rendering
-    const data = await prepare(filePath, req);
+    const data = await render(filePath, req);
 
     res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
     res.header("Expires", "-1");

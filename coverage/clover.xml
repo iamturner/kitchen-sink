@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741645534454" clover="3.2.0">
-  <project timestamp="1741645534454" name="All files">
-    <metrics statements="134" coveredstatements="74" conditionals="33" coveredconditionals="17" methods="43" coveredmethods="24" elements="210" coveredelements="115" complexity="0" loc="134" ncloc="134" packages="8" files="27" classes="27"/>
+<coverage generated="1741773114754" clover="3.2.0">
+  <project timestamp="1741773114756" name="All files">
+    <metrics statements="91" coveredstatements="85" conditionals="26" coveredconditionals="20" methods="35" coveredmethods="29" elements="152" coveredelements="134" complexity="0" loc="91" ncloc="91" packages="11" files="26" classes="26"/>
     <package name="app">
-      <metrics statements="24" coveredstatements="20" conditionals="11" coveredconditionals="8" methods="8" coveredmethods="4"/>
+      <metrics statements="7" coveredstatements="3" conditionals="7" coveredconditionals="6" methods="2" coveredmethods="1"/>
       <file name="App.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/App.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-      </file>
-      <file name="apollo-client.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/apollo-client.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
-        <line num="5" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="7" count="1" type="stmt"/>
       </file>
       <file name="index.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/index.tsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -21,27 +16,9 @@
       </file>
       <file name="providers.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/providers.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="7" coveredconditionals="6" methods="1" coveredmethods="1"/>
-        <line num="18" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="25" count="3" type="stmt"/>
-      </file>
-      <file name="socket.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/socket.tsx">
-        <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="3"/>
-        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="25" count="3" type="stmt"/>
-        <line num="27" count="3" type="stmt"/>
-        <line num="29" count="3" type="stmt"/>
-        <line num="30" count="3" type="stmt"/>
-        <line num="31" count="3" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
-        <line num="37" count="3" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <line num="18" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
       </file>
       <file name="store.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/store.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -57,18 +34,18 @@
       <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
       <file name="Button.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/components/button/Button.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="9" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="7" count="10" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
       </file>
       <file name="Button.types.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/components/button/Button.types.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
       <file name="button.styled.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/components/button/button.styled.ts">
         <metrics statements="3" coveredstatements="3" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="10" type="cond" truecount="2" falsecount="0"/>
       </file>
       <file name="index.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/components/button/index.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -81,10 +58,10 @@
       </file>
     </package>
     <package name="app.features.notifications">
-      <metrics statements="42" coveredstatements="39" conditionals="6" coveredconditionals="3" methods="16" coveredmethods="13"/>
+      <metrics statements="42" coveredstatements="41" conditionals="6" coveredconditionals="4" methods="16" coveredmethods="15"/>
       <file name="Notifications.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/Notifications.tsx">
         <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="5"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
@@ -106,51 +83,51 @@
       </file>
       <file name="notifications.queries.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/notifications.queries.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
       </file>
       <file name="notifications.slice.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/notifications.slice.ts">
-        <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="29" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="29" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="30" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
       </file>
       <file name="notifications.styled.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/notifications.styled.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
       </file>
       <file name="useNotifications.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/useNotifications.ts">
-        <metrics statements="16" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="4"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
+        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="5" coveredmethods="5"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
         <line num="26" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="27" count="3" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="40" count="3" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
-        <line num="45" count="3" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
-        <line num="58" count="3" type="stmt"/>
+        <line num="58" count="4" type="stmt"/>
       </file>
     </package>
     <package name="app.features.notifications.components">
       <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
       <file name="ListItem.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/features/notifications/components/ListItem.tsx">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="10" count="3" type="stmt"/>
         <line num="12" count="3" type="stmt"/>
         <line num="14" count="3" type="stmt"/>
@@ -161,84 +138,70 @@
         <line num="33" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="app.pages">
-      <metrics statements="8" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="Error.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/pages/Error.tsx">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
+    <package name="app.lib">
+      <metrics statements="17" coveredstatements="17" conditionals="4" coveredconditionals="2" methods="6" coveredmethods="3"/>
+      <file name="apollo-client.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/lib/apollo-client.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
+        <line num="5" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="3" type="stmt"/>
       </file>
-      <file name="Home.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/pages/Home.tsx">
-        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
+      <file name="socket.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/lib/socket.tsx">
+        <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="3"/>
+        <line num="12" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="44" count="3" type="stmt"/>
       </file>
     </package>
-    <package name="server">
-      <metrics statements="45" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="9" coveredmethods="0"/>
-      <file name="clients.ts" path="/Users/ianturner/apps/kitchen-sink/src/server/clients.ts">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="0" type="stmt"/>
+    <package name="app.pages">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/pages/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="index.ts" path="/Users/ianturner/apps/kitchen-sink/src/server/index.ts">
-        <metrics statements="28" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="75" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
+    </package>
+    <package name="app.pages.error">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Error.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/pages/error/Error.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
       </file>
-      <file name="resolvers.ts" path="/Users/ianturner/apps/kitchen-sink/src/server/resolvers.ts">
-        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+      <file name="index.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/pages/error/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="typedefs.ts" path="/Users/ianturner/apps/kitchen-sink/src/server/typedefs.ts">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="0" type="stmt"/>
+    </package>
+    <package name="app.pages.home">
+      <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="Home.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/pages/home/Home.tsx">
+        <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
       </file>
-      <file name="utilities.ts" path="/Users/ianturner/apps/kitchen-sink/src/server/utilities.ts">
-        <metrics statements="9" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
+      <file name="index.ts" path="/Users/ianturner/apps/kitchen-sink/src/app/pages/home/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="app.utils">
+      <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="test.utils.tsx" path="/Users/ianturner/apps/kitchen-sink/src/app/utils/test.utils.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="6" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="5" type="stmt"/>
       </file>
     </package>
   </project>

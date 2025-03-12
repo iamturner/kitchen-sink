@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actions } from "./notifications.slice";
 import { type NotificationProps } from "./Notifications.types";
 import { CreateNotification, GetNotifications } from "./notifications.queries";
-import { useSocket } from "../../socket";
+import { useSocket } from "../../lib/socket";
 
 const useNotifications = () => {
   const { socket } = useSocket();

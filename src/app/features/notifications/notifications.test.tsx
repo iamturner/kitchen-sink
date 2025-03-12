@@ -3,7 +3,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import {
   act,
   fireEvent,
-  render,
   renderHook,
   screen,
   waitFor,
@@ -12,8 +11,8 @@ import { ProviderProps } from "react-redux";
 import Notifications, { actions, reducer, useNotifications } from ".";
 import { GetNotifications } from "./notifications.queries";
 import Notification from "./components/ListItem";
-import Providers from "../../providers";
-import { useSocket } from "../../socket";
+import { useSocket } from "../../lib/socket";
+import { renderWithProviders } from "../../utils/test.utils";
 
 const mocks = [
   {
@@ -84,16 +83,40 @@ describe("Feature: Notifications", () => {
     expect(state).toEqual(initialState);
   });
 
-  test("action should add a notification to state", () => {
-    const initialState = { value: [] };
+  test("action should set new state value", () => {
+    const initialState = {
+      value: [{ id: "1", message: "Notification 1" }],
+    };
 
     const state = reducer(
       initialState,
-      actions.add({ id: "1", message: "Notification 1" }),
+      actions.init({ id: "2", message: "Notification 2" }),
     );
 
     expect(state.value).toEqual(
-      expect.arrayContaining([{ id: "1", message: "Notification 1" }]),
+      expect.arrayContaining([{ id: "2", message: "Notification 2" }]),
+    );
+    // initializing state overwrites existing state
+    expect(state.value).toEqual(
+      expect.not.arrayContaining([{ id: "1", message: "Notification 1" }]),
+    );
+  });
+
+  test("action should add a notification to state", () => {
+    const initialState = {
+      value: [{ id: "1", message: "Notification 1" }],
+    };
+
+    const state = reducer(
+      initialState,
+      actions.add({ id: "2", message: "Notification 2" }),
+    );
+
+    expect(state.value).toEqual(
+      expect.arrayContaining([
+        { id: "1", message: "Notification 1" },
+        { id: "2", message: "Notification 2" },
+      ]),
     );
   });
 
@@ -112,6 +135,24 @@ describe("Feature: Notifications", () => {
     );
   });
 
+  test("action should NOT remove a notification from state when invalid ID passed", () => {
+    const initialState = {
+      value: [
+        { id: "1", message: "Notification 1" },
+        { id: "2", message: "Notification 2" },
+      ],
+    };
+
+    const state = reducer(initialState, actions.remove("3"));
+
+    expect(state.value).toEqual(
+      expect.arrayContaining([
+        { id: "1", message: "Notification 1" },
+        { id: "2", message: "Notification 2" },
+      ]),
+    );
+  });
+
   test("send function should trigger mutation", () => {
     const { result } = renderHook(() => useNotifications());
 
@@ -125,11 +166,8 @@ describe("Feature: Notifications", () => {
   });
 
   test("fetches notifications on render", async () => {
-    render(
-      <Providers mocks={mocks} store={store}>
-        <Notifications />
-      </Providers>,
-    );
+    // render with providers and mocks
+    renderWithProviders(<Notifications />, { mocks, store });
 
     // fetch message should be dispatched to store
     await waitFor(() =>
@@ -141,11 +179,8 @@ describe("Feature: Notifications", () => {
   });
 
   test("dispatches notifications on socket notify event", async () => {
-    render(
-      <Providers mocks={mocks} store={store}>
-        <Notifications />
-      </Providers>,
-    );
+    // render with providers and mocks
+    renderWithProviders(<Notifications />, { mocks, store });
 
     const { socket } = (useSocket as jest.Mock)();
 
@@ -169,11 +204,8 @@ describe("Feature: Notifications", () => {
   });
 
   test("removes notification from store on button click", async () => {
-    render(
-      <Providers>
-        <Notification id="1" message="Notification 1" />
-      </Providers>,
-    );
+    // render with providers and mocks
+    renderWithProviders(<Notification id="1" message="Notification 1" />);
 
     fireEvent.click(screen.getByTitle("Remove Notification"));
 
