@@ -12,6 +12,7 @@ const CreateNotification = gql`
 const GetNotifications = gql`
   query GetNotifications {
     notifications {
+      date
       id
       message
     }
